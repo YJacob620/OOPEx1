@@ -33,6 +33,7 @@ public abstract class ConcretePiece implements Piece {
         return totalDistance;
     }
 
+    /* Stores visited positions (if moved at least once)*/
     public ArrayList<Position> getPositionHistory() {
         return positionHistory;
     }
@@ -67,8 +68,8 @@ public abstract class ConcretePiece implements Piece {
             positionHistory = new ArrayList<>();
             totalDistance = 0;
         } else {
-            Position lastPos = positionHistory.removeLast();
-            this.addToTotalDistance(-(lastPos.manhattanDistanceTo(positionHistory.getLast())));
+            Position lastPos = positionHistory.remove(0);
+            this.addToTotalDistance(-(lastPos.manhattanDistanceTo(positionHistory.get(positionHistory.size()-1))));
         }
     }
 }
