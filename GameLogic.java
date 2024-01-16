@@ -360,7 +360,7 @@ public class GameLogic implements PlayableLogic {
             if (positionHistory != null) {
                 boolean[][] wasOnPosition = new boolean[BOARD_SIZE][BOARD_SIZE];
                 while (!positionHistory.isEmpty()) {
-                    Position pos = positionHistory.remove(0);
+                    Position pos = positionHistory.removeFirst();
                     wasOnPosition[pos.getX()][pos.getY()] = true;
                 }
                 for (int i = 0; i < BOARD_SIZE; i++) {
@@ -394,7 +394,7 @@ public class GameLogic implements PlayableLogic {
         StringBuilder ans = new StringBuilder();
         positionsToPrint.sort(new positionCompareDescending());
         while (!positionsToPrint.isEmpty()) {
-            Position toPrint = positionsToPrint.remove(0);
+            Position toPrint = positionsToPrint.removeFirst();
             ans.append('\n').append(toPrint).append(diffPiecesCounter[toPrint.getX()][toPrint.getY()]).append(" pieces");
         }
         return ans.toString();
